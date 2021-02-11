@@ -2,12 +2,22 @@ import { Game } from "./game.js";
 let game = undefined;
 let boardHolder = document.getElementById("board-holder");
 let gameName = document.getElementById("game-name");
+let clickTarget = document.querySelector("#click-targets");
+
 let updateUI = function () {
   if (game === undefined) {
     boardHolder.classList.add("is-invisible");
   } else {
     boardHolder.classList.remove("is-invisible");
-    gameName.innerHTML = getName();
+    gameName.innerHTML = game.getName();
+  }
+  if (game.this.currentPlayer === 1) {
+    // asume p1 is red && p2 is black
+    clickTarget.classList.add("red");
+    clickTarget.classList.remove("black");
+  } else {
+    clickTarget.classList.add("black");
+    clickTarget.classList.remove("red");
   }
 };
 
@@ -37,15 +47,16 @@ p2Input.addEventListener("keyup", (event) => {
 
 newGameBtn.addEventListener("click", (event) => {
   game = new Game(p1Input.value, p2Input.value);
+  console.log(game.this.currentPlayer);
   p1Input.value = "";
   p2Input.value = "";
   newGameBtn.setAttribute("disabled", true); // refactor later
   updateUI();
 });
 
-let clickTarget = document.querySelector('#click-targets')
-console.log(game)
-clickTarget.addEventListener('click', event => {
-  console.log(game)
-  game.playInColumn()
-})
+console.log(game);
+clickTarget.addEventListener("click", (event) => {
+  console.log(game);
+  game.playInColumn();
+  updateUI();
+});
