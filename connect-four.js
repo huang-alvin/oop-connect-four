@@ -4,5 +4,9 @@ window.addEventListener("DCOMContentLoaded", (event) => {
   let p1Input = document.getElementById("player-1-name");
   let newGame = document.getElementById("new-game");
   let p2Input = document.getElementById("player-2-name");
-  p1Input.addEventListener("keyup", (event) => {});
+  p1Input.addEventListener("keyup", (event) => {
+    if (p1Input !== "" && p2Input !== "") {
+      newGame.setAttribute("disable", "false");
+    }
+  });
 });
