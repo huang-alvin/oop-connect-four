@@ -10,16 +10,18 @@ let updateUI = function () {
     gameName.innerHTML = getName();
   }
 };
-// window.addEventListener("DCOMContentLoaded", (event) => {
+
 let p1Input = document.getElementById("player-1-name");
 let newGameBtn = document.getElementById("new-game");
 let p2Input = document.getElementById("player-2-name");
 console.log("dom content");
 let playerName = function () {
   if (p1Input.value !== "" && p2Input.value !== "") {
-    newGameBtn.setAttribute("disabled", false);
+    newGameBtn.disabled = false;
+
+    // newGameBtn.removeAttribute('disabled')
   } else {
-    newGameBtn.setAttribute("disabled", true);
+    newGameBtn.disabled = true;
   }
 };
 
@@ -37,7 +39,13 @@ newGameBtn.addEventListener("click", (event) => {
   game = new Game(p1Input.value, p2Input.value);
   p1Input.value = "";
   p2Input.value = "";
-  newGameBtn.setAttribute("disabled", true);
+  newGameBtn.setAttribute("disabled", true); // refactor later
   updateUI();
 });
-// });
+
+let clickTarget = document.querySelector('#click-targets')
+console.log(game)
+clickTarget.addEventListener('click', event => {
+  console.log(game)
+  game.playInColumn()
+})
