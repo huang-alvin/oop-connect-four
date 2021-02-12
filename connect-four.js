@@ -4,8 +4,6 @@ let boardHolder = document.getElementById("board-holder");
 let gameName = document.getElementById("game-name");
 let clickTarget = document.querySelector("#click-targets");
 
-
-
 let p1Input = document.getElementById("player-1-name");
 let newGameBtn = document.getElementById("new-game");
 let p2Input = document.getElementById("player-2-name");
@@ -47,7 +45,6 @@ let updateUI = function () {
   }
 };
 
-
 newGameBtn.addEventListener("click", (event) => {
   game = new Game(p1Input.value, p2Input.value);
   console.log(game);
@@ -57,9 +54,7 @@ newGameBtn.addEventListener("click", (event) => {
   updateUI();
 });
 
-
 clickTarget.addEventListener("click", (event) => {
-
   game.playInColumn();
   updateUI();
 });
