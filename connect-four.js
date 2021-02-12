@@ -53,17 +53,22 @@ let updateUI = function () {
       console.log(tokenVal);
       if (tokenVal === 1) {
         let squareDiv = document.createElement("div");
-        squareDiv.classList.add("token", "black");
+        squareDiv.classList.add("token", "red");
         console.log(squareDiv, "black");
 
         square.appendChild(squareDiv);
       }
       if (tokenVal === 2) {
         let squareDiv = document.createElement("div");
-        squareDiv.classList.add("token", "red");
-        console.log(squareDiv, "red");
+        squareDiv.classList.add("token", "black");
+
         square.appendChild(squareDiv);
       }
+    }
+  }
+  for (let k = 0; k <= 6; k++) {
+    if (game.columns[k].isColumnFull()) {
+      game.columns[k].classList.add('full')
     }
   }
 };

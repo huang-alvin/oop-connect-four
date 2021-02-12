@@ -3,10 +3,13 @@ export default class Column {
     this.arr = [null, null, null, null, null, null];
   }
   add(playerNum) {
-    for (let i = this.arr.length - 1; i >= 0; i--) {
-      if (this.arr[i] === null) {
-        this.arr[i] = playerNum;
-        return;
+    this.isFull()
+    if(!this.isFull()){
+      for (let i = this.arr.length - 1; i >= 0; i--) {
+        if (this.arr[i] === null) {
+          this.arr[i] = playerNum;
+          return;
+        }
       }
     }
   }
@@ -19,5 +22,15 @@ export default class Column {
       return 2;
     }
   }
+
+  isFull () {
+    for (let i = this.arr.length - 1; i >= 0; i--) {
+      if (this.arr[i] === null) {return false}
+
+    }
+    return true;
+  }
+
+  // isfull, add calls is full if isfull no forloop in add
 }
 // if rowIdx === p2 return 2 ,else return
