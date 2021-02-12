@@ -49,14 +49,19 @@ let updateUI = function () {
       let squareId = `#square-${i}-${j}`;
       let square = document.querySelector(squareId);
       square.innerHTML = "";
+      console.log(squareId);
+      console.log(tokenVal);
       if (tokenVal === 1) {
         let squareDiv = document.createElement("div");
         squareDiv.classList.add("token", "black");
+        console.log(squareDiv, "black");
+
         square.appendChild(squareDiv);
       }
       if (tokenVal === 2) {
         let squareDiv = document.createElement("div");
         squareDiv.classList.add("token", "red");
+        console.log(squareDiv, "red");
         square.appendChild(squareDiv);
       }
     }

@@ -3,9 +3,10 @@ export default class Column {
     this.arr = [null, null, null, null, null, null];
   }
   add(playerNum) {
-    for (let i = 0; i < this.arr.length; i++) {
+    for (let i = this.arr.length - 1; i >= 0; i--) {
       if (this.arr[i] === null) {
         this.arr[i] = playerNum;
+        return;
       }
     }
   }
