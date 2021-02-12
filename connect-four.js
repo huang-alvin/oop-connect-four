@@ -45,7 +45,14 @@ let updateUI = function () {
   }
   for (let i = 0; i <= 5; i++) {
     for (let j = 0; j <= 6; j++) {
-      game.getTokenAt();
+      let tokenVal = game.getTokenAt(i, j);
+      let squareId = `#square-${i}-${j}`
+      let square = document.querySelector(squareId)
+      
+      // get row num
+
+      // #square-«i»-«j»
+      // #square-«row»-«column»
     }
   }
 };
