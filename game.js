@@ -3,6 +3,7 @@ export class Game {
     this.player1 = player1Name;
     this.player2 = player2Name;
     this.currentPlayer = 1;
+    
   }
 
   getName() {
