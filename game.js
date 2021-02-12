@@ -19,6 +19,10 @@ export class Game {
   }
 
   getName() {
+    if (this.winnerNumber === 3) {
+      console.log('get name')
+      return `${this.player1} ties with ${this.player2}`
+    }
     return `${this.player1} vs. ${this.player2}`;
   }
 
@@ -30,6 +34,9 @@ export class Game {
     } else {
       this.currentPlayer = 1;
     }
+    console.log('play in')
+    this.checkForTie()
+
   }
 
   getTokenAt(rowIdx, colIdx) {
@@ -44,13 +51,13 @@ export class Game {
   }
 
   checkForTie() {
-    // for(let i = 0; i < this.columns.length; i++){
-    //   // columns [i] call isColumnFull
-    //this.columns.every(col=>{col.isColumnFull})
-    if (this.columns.every(col, (i) => col.isColumnFull(i))) {
-      this.winnerNumber = 3;
+    for(let i = 0; i < this.columns.length; i++){
+      let column = this.columns[i]
+      if(!column.isFull()) {
+        return;
+      }
     }
-    //
-    // }
+    console.log('check tie')
+    this.winnerNumber = 3
   }
 }

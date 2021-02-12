@@ -33,6 +33,7 @@ let updateUI = function () {
     boardHolder.classList.add("is-invisible");
   } else {
     boardHolder.classList.remove("is-invisible");
+    console.log('update ui')
     gameName.innerHTML = game.getName();
   }
   if (game.currentPlayer === 1) {
