@@ -5,6 +5,7 @@ export class Game {
     this.player1 = player1Name;
     this.player2 = player2Name;
     this.currentPlayer = 1;
+    this.winnerNumber = 0;
 
     this.columns = [
       new Column(),
@@ -38,7 +39,18 @@ export class Game {
     // colums[colIdx]
   }
 
-  isColumnFull (columnIdx) {
-    return this.column[columnIdx].isFull()
+  isColumnFull(columnIdx) {
+    return this.columns[columnIdx].isFull();
+  }
+
+  checkForTie() {
+    // for(let i = 0; i < this.columns.length; i++){
+    //   // columns [i] call isColumnFull
+    //this.columns.every(col=>{col.isColumnFull})
+    if (this.columns.every(col, (i) => col.isColumnFull(i))) {
+      this.winnerNumber = 3;
+    }
+    //
+    // }
   }
 }

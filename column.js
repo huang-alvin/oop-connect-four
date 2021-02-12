@@ -3,8 +3,8 @@ export default class Column {
     this.arr = [null, null, null, null, null, null];
   }
   add(playerNum) {
-    this.isFull()
-    if(!this.isFull()){
+    this.isFull();
+    if (!this.isFull()) {
       for (let i = this.arr.length - 1; i >= 0; i--) {
         if (this.arr[i] === null) {
           this.arr[i] = playerNum;
@@ -23,10 +23,11 @@ export default class Column {
     }
   }
 
-  isFull () {
+  isFull() {
     for (let i = this.arr.length - 1; i >= 0; i--) {
-      if (this.arr[i] === null) {return false}
-
+      if (this.arr[i] === null) {
+        return false;
+      }
     }
     return true;
   }

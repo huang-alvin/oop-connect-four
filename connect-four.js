@@ -49,13 +49,9 @@ let updateUI = function () {
       let squareId = `#square-${i}-${j}`;
       let square = document.querySelector(squareId);
       square.innerHTML = "";
-      console.log(squareId);
-      console.log(tokenVal);
       if (tokenVal === 1) {
         let squareDiv = document.createElement("div");
         squareDiv.classList.add("token", "red");
-        console.log(squareDiv, "black");
-
         square.appendChild(squareDiv);
       }
       if (tokenVal === 2) {
@@ -67,8 +63,12 @@ let updateUI = function () {
     }
   }
   for (let k = 0; k <= 6; k++) {
-    if (game.columns[k].isColumnFull()) {
-      game.columns[k].classList.add('full')
+    let col = document.getElementById(`column-${k}`);
+    if (game.isColumnFull(k)) {
+      //watch carefully what that method returns, and payattention to contxt
+      col.classList.add("full");
+    } else {
+      col.classList.remove("full");
     }
   }
 };
