@@ -20,12 +20,12 @@ let playerName = function () {
 
 p1Input.addEventListener("keyup", (event) => {
   playerName();
-  console.log("p1");
+
 });
 
 p2Input.addEventListener("keyup", (event) => {
   playerName();
-  console.log("p2");
+
 });
 
 let updateUI = function () {

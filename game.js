@@ -1,4 +1,5 @@
 import Column from "./column.js";
+import ColumnWinInspector from "./columnwininspector.js"
 
 export class Game {
   constructor(player1Name, player2Name) {
@@ -34,8 +35,12 @@ export class Game {
     } else {
       this.currentPlayer = 1;
     }
-    console.log('play in')
+
     this.checkForTie()
+    if (this.winnerNumber === 0) {
+      this.checkForColumnWin()
+    }
+
 
   }
 
@@ -59,5 +64,18 @@ export class Game {
     }
     console.log('check tie')
     this.winnerNumber = 3
+  }
+
+  checkForColumnWin() {
+    this.columns.forEach(ele => {
+      let inspector = new ColumnWinInspector (ele);
+      let result = inspector.inspect()
+      if(result === 1 || result === 2) {
+        this.winnerNumber = result;
+        return
+      }
+
+    })
+
   }
 }
