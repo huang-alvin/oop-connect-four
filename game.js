@@ -27,9 +27,9 @@ export class Game {
   }
 
   getTokenAt (rowIdx, colIdx) {
-    this.column = this.columns[colIdx]
+    this.column = this.columns[colIdx];
 
-    return this.column.getTokenAt(rowIdx)
+    return this.column.getTokenAt(rowIdx);
     // colums[colIdx]
 
   }

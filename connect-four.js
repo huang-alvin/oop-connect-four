@@ -43,6 +43,11 @@ let updateUI = function () {
     clickTarget.classList.add("black");
     clickTarget.classList.remove("red");
   }
+  for (let i = 0; i <= 5; i++) {
+    for (let j = 0; j <= 6; j++) {
+      game.getTokenAt();
+    }
+  }
 };
 
 newGameBtn.addEventListener("click", (event) => {
@@ -55,6 +60,7 @@ newGameBtn.addEventListener("click", (event) => {
 });
 
 clickTarget.addEventListener("click", (event) => {
-  game.playInColumn();
+  let columnNum = event.target.id[event.target.id.length - 1];
+  game.playInColumn(Number(columnNum));
   updateUI();
 });
