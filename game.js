@@ -1,5 +1,5 @@
 import Column from "./column.js";
-import ColumnWinInspector from "./columnwininspector.js"
+import ColumnWinInspector from "./columnwininspector.js";
 
 export class Game {
   constructor(player1Name, player2Name) {
@@ -20,9 +20,13 @@ export class Game {
   }
 
   getName() {
-    if (this.winnerNumber === 3) {
-      console.log('get name')
-      return `${this.player1} ties with ${this.player2}`
+    if (this.winnerNumber === 1) {
+      return `${this.player1} wins!`;
+    } else if (this.winnerNumber === 2) {
+      return `${this.player2} wins!`;
+    } else if (this.winnerNumber === 3) {
+      console.log("get name");
+      return `${this.player1} ties with ${this.player2}`;
     }
     return `${this.player1} vs. ${this.player2}`;
   }
@@ -36,12 +40,10 @@ export class Game {
       this.currentPlayer = 1;
     }
 
-    this.checkForTie()
+    this.checkForTie();
     if (this.winnerNumber === 0) {
-      this.checkForColumnWin()
+      this.checkForColumnWin();
     }
-
-
   }
 
   getTokenAt(rowIdx, colIdx) {
@@ -52,30 +54,34 @@ export class Game {
   }
 
   isColumnFull(columnIdx) {
+    if (this.winnerNumber === 1 || this.winnerNumber === 2) {
+      return true;
+    }
     return this.columns[columnIdx].isFull();
   }
 
   checkForTie() {
-    for(let i = 0; i < this.columns.length; i++){
-      let column = this.columns[i]
-      if(!column.isFull()) {
+    for (let i = 0; i < this.columns.length; i++) {
+      let column = this.columns[i];
+      if (!column.isFull()) {
         return;
       }
     }
-    console.log('check tie')
-    this.winnerNumber = 3
+    console.log("check tie");
+    this.winnerNumber = 3;
   }
 
   checkForColumnWin() {
-    this.columns.forEach(ele => {
-      let inspector = new ColumnWinInspector (ele);
-      let result = inspector.inspect()
-      if(result === 1 || result === 2) {
+    this.columns.forEach((ele) => {
+      console.log(ele[5], "ele check");
+      let inspector = new ColumnWinInspector(ele);
+      //console.log(inspector);
+      let result = inspector.inspect();
+      //console.log(result);
+      if (result === 1 || result === 2) {
         this.winnerNumber = result;
-        return
+        return;
       }
-
-    })
-
+    });
   }
 }
